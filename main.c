@@ -466,7 +466,21 @@ int main() {
         }
 
         if (current_running >= 0 && processes[current_running].state == RUNNING) {
+            if (processes[current_running].pc < MAX_PC){
             processes[current_running].pc++;
+            }
+
+            if (processes[current_running].pc >= MAX_PC) {
+                processes[current_running].state = FINISHED;
+                char buf[128];
+                int n = snprintf(buf, sizeof(buf),
+                    "Kernel: A%d (pid %d) finalizado\n",
+                    current_running + 1,
+                    processes[current_running].pid);
+                write(STDOUT_FILENO, buf, n);
+
+                current_running = -1;
+    }
         }
     }
 
