@@ -14,7 +14,7 @@
 #define IC_PERIOD_US 500000  // 500 ms
 #define _GNU_SOURCE
 
-// Estados possíveis dos processos
+// Estados dos processos
 typedef enum {READY, RUNNING, BLOCKED, FINISHED} State;
 
 // Estrutura do processo de aplicação
